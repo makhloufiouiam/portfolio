@@ -88,23 +88,28 @@ experience: {
 projects: {
   title: 'Projets',
   inProgressLabel: 'En cours',
+  allLabel: 'Tous',
+  githubLabel: 'Voir sur GitHub',
+  reportLabel: 'Voir le rapport',
+  readMore: 'Lire plus',
+  readLess: 'Lire moins',
   categories: [
     {
-      name: 'Télédétection & Analyse Spatiale',
+      name: 'Télédétection & Analyse Spatiale', tag: 'Télédétection',
       items: [
         {title: 'Plugin QGIS - Aide à la décision (Dérogation & Sentinel)',description: "Plugin QGIS à deux fenêtres. La première analyse les demandes de dérogation en urbanisme : surface minimale de 1 ha, protection des espaces verts, distance minimale entre projets dérogés, zone tampon, intersection avec les types de foncier, calcul des indicateurs et export CSV/PDF. La seconde télécharge des images Sentinel-2 et Sentinel-1 et calcule les indices (NDVI, NDWI, NDBI, NDMI, RVI, VV/VH, NDPI, DPSVI).",tech: 'Python, PyQGIS, PyQt5, Sentinel-1/2',image: '/images/projects/plugin-derogation.PNG',github: 'https://github.com/makhloufiouiam/qgis-derogation-plugin'},
-        { title: "Qualité de l'eau - Merja Zerga", description: "Analyse de la qualité de l'eau de la lagune de Merja Zerga à partir d'images Landsat 8 et 9 et d'algorithmes de Machine Learning.", tech: 'Google Earth Engine, Machine Learning' },
-        { title: 'Classification des zones brûlées - Rmilat', description: 'Classification supervisée par Random Forest des zones brûlées et non brûlées de la forêt de Rmilat à partir d\'images Sentinel-2.', tech: 'Python, Random Forest, Google Earth Engine' },
-        { title: 'Analyse spatiale multicritère - Stowe', description: "Analyse spatiale multicritère par SIG pour localiser le site optimal d'implantation d'une nouvelle école à Stowe et déterminer l'itinéraire optimal vers un carrefour à proximité.", tech: 'QGIS, Analyse spatiale' },
-        { title: 'Trait de côte - Baie de Tanger', description: 'Analyse, digitalisation et cartographie du trait de côte de la baie de Tanger.', tech: 'QGIS, Cartographie' },
+        { title: "Qualité de l'eau - Merja Zerga", description: "Surveillance de la qualité des eaux de la lagune de Merja Zerga (Moulay Bousselham, site Ramsar) par télédétection optique, pour suivre ses variations saisonnières (2025-2026) et l'impact du confinement COVID-19 (2020). Images Landsat 8 et 9 prétraitées sous ENVI : correction radiométrique, correction atmosphérique DOS1, stack multispectral et masque d'eau NDWI. Calcul des indices de turbidité (NDTI), de matières en suspension (NSMI) et de chlorophylle-a, puis classification non supervisée K-Means sous Google Earth Engine en trois classes de qualité (bonne, moyenne, mauvaise). Résultat : une dynamique saisonnière marquée, avec une turbidité maximale en automne due aux apports fluviaux et une prolifération algale en été liée à l'eutrophisation.", tech: "Landsat 8/9, ENVI, Google Earth Engine, K-Means, Indices spectraux (NDWI, NDTI, NSMI, Chl-a)" },
+        { title: "Classification des zones brûlées - Rmilat", description: "Détection et cartographie des zones brûlées de la forêt de Rmilat (Tanger) après l'incendie d'août 2023 : images Sentinel-2 avant et après le feu acquises via Google Earth Engine, calcul d'indices spectraux (dNBR, NDVI, NDWI, NDBI), vérité terrain générée par seuillage multi-indices pour quatre classes (brûlé, végétation saine, eau, bâti), puis classification Random Forest optimisée par validation croisée. Accuracy de 96,45 % et surface brûlée estimée à 493,6 ha, avec export de la carte finale en GeoTIFF.", tech: "Python, scikit-learn (Random Forest), rasterio, NumPy, pandas, Google Earth Engine, Sentinel-2, Jupyter", report: '/documents/Rapport_Classification_Random_Forest_Rmilat.pdf' },
+        { title: "Analyse spatiale multicritère - Stowe", description: "Recherche du site optimal pour l'implantation d'une nouvelle école à Stowe : combinaison de plusieurs critères pondérés selon leur importance, au moyen d'opérations d'analyse spatiale (intersection, union, découpage...), puis détermination de l'itinéraire le plus optimal entre le site retenu et un carrefour à proximité.", tech: "ArcMap, Analyse multicritère, Géotraitement" },
+        { title: "Trait de côte - Baie de Tanger", description: "Étude de l'érosion côtière de la baie de Tanger : digitalisation du trait de côte sur deux images satellites de deux années différentes, puis comparaison des deux tracés pour mesurer son évolution. L'analyse a mis en évidence une érosion de la baie et a permis de classer les zones de la plus dangereuse à la moins dangereuse selon leur distance à la ligne de rivage. Les résultats sont restitués dans une carte de synthèse.", tech: "ArcMap, Digitalisation, Imagerie satellite, Analyse diachronique" },
       ],
     },
     {
-      name: 'Plateformes WebSIG & Cartographie Interactive',
+      name: 'Plateformes WebSIG & Cartographie Interactive', tag: 'WebSIG',
       items: [
         { title: 'GeoAcadémie', description: "Carte interactive des hôpitaux et centres hospitaliers de la région Tanger-Tétouan-Al Hoceïma, réalisée  sur la plateforme no-code GeoAcadémie : collecte de données via Overpass Turbo et OpenStreetMap, création de la carte avec icônes personnalisées, outils de recherche et filtres liés (nom d'hôpital, ville), fiche d'information éditable organisée en sections thématiques, et tableau de bord avec statistiques (répartition par ville et par type d'établissement).", tech: 'GeoAcadémie, OpenStreetMap, Overpass Turbo', image : '/images/projects/Geoacadimie.PNG' , report: '/documents/geoacademie-rapport.pdf' },
-        { title: 'Atlas interactif', description: 'Conception d\'un atlas interactif pour la visualisation de cartes et de statistiques régionales.', tech: 'Cartographie interactive' },
-        { title: 'Plateforme billetterie CAN 2025', description: "Développement d'une plateforme cartographique pour la réservation des billets de la CAN 2025.", tech: 'SIG, Développement web' },
+        { title: 'Atlas thématique interactif - Région Rabat-Salé-Kénitra', description: "Problématique : comment se répartissent les dynamiques de développement territorial dans la région Rabat-Salé-Kénitra ? Objectif : mesurer les disparités de la région selon sept dimensions (population, eau, agriculture, sécurité routière, infrastructures, pauvreté, précipitations) à travers un atlas de plus de 15 cartes. Méthodologie : données HCP et OpenStreetMap, statistiques sous Excel et R, indices composites (pression hydrique agricole, risque sanitaire et accidentel), télédétection Sentinel-1/2/5P sous Google Earth Engine (NDVI, inondations 2026, NO₂) et cartographie QGIS/PhilCarto. Résultat : une fracture entre le littoral urbain et un arrière-pays cumulant stress hydrique, pauvreté et faible accessibilité, restituée en atlas PDF et en version web interactive.", tech: 'QGIS, PhilCarto, R, Excel, Google Earth Engine, Sentinel-1/2/5P, OpenStreetMap (QuickOSM, Overpass), Web mapping', image: '/images/projects/Atlas.PNG.jpg', report: '/documents/Rapport_Atlas.pdf' },
+        { title: 'AFRICA TICKET - Plateforme billetterie CAN 2025', description: "Plateforme web full-stack de réservation de billets pour la CAN 2025 au Maroc. Comptes utilisateurs sécurisés, calendrier des 52 matchs, équipes par groupe (classements FIFA/CAF, titres CAN), réservation par catégorie (VIP, Standard, Économique) avec panier, tarification dynamique selon la proximité du match et statut « Sold out », paiement via l'API PayPal, génération du billet en PDF (porte, place, date) téléchargeable ou envoyé par WhatsApp. Carte interactive Leaflet/OpenStreetMap des 9 stades avec fiche d'information et itinéraire Google Maps depuis la position de l'utilisateur, et page d'activités culturelles et touristiques filtrées par proximité des stades.", tech: 'PHP 8, MySQL/MariaDB (PDO), HTML5, CSS3, JavaScript, Leaflet, OpenStreetMap, Google Maps API, PayPal API, XAMPP', image: '/images/projects/can_2025.PNG', github: 'https://github.com/makhloufiouiam/can_2025', report: '/documents/Rapport%20exam%20final.pdf' },
         {
   title: "Stage d'initiation - Plateforme WebSIG (Tanger Med Engineering)",
   description: "Stage d'initiation du 4 juillet au 4 août 2025 chez Tanger Med Engineering : conception d'un mini site WebSIG de gestion et de visualisation d'anomalies géographiques. Table des entités, carte interactive (points, lignes, polygones) avec fiche d'information modifiable, ajout d'entités par dessin, et outils SIG reposant sur des requêtes spatiales PostGIS : distance (ST_Distance), intersection (ST_Intersects), voisinage (ST_DWithin), zone tampon (ST_Buffer) et filtrage par titre.",
@@ -124,7 +129,7 @@ projects: {
       ],
     },
     {
-      name: 'Applications & Interfaces (Python / Java)',
+      name: 'Applications & Interfaces (Python / Java)', tag: 'Applications',
       items: [
         { title: 'Interface Tkinter - Cancer du pancréas', description: "Application interactive d'analyse et de cartographie des données médicales liées au cancer du pancréas au Maroc : exploration des données patients par région, recherche par ID, visualisation des facteurs de risque, tests statistiques de dépendance et génération de rapports PDF.", tech: 'Python, Tkinter, Analyse de données' , image: '/images/projects/Cancer-projet.PNG' , github: 'https://github.com/makhloufiouiam/pancreatic-cancer-gis' , report : '/documents/Rapport_CancerInterface.pdf'},
         {title:  'Interface PyQt6 - Calcul géodésique',description: "Application de calculs géodésiques : informations sur les ellipsoïdes (Clarke 1880, WGS84), calcul des excentricités et de l'aplatissement, rayons de courbure, conversion de coordonnées géographiques vers cartésiennes, longueur d'arc méridien et parallèle, calcul de superficie, résolution des problèmes direct et inverse.",tech: 'Python, PyQt6',image: '/images/projects/geodesie-projet.PNG',github: 'https://github.com/makhloufiouiam/calculs-geodesiques'},
@@ -133,7 +138,7 @@ projects: {
       ],
     },
     {
-      name: 'Développement Web',
+      name: 'Développement Web', tag: 'Web',
       items: [
         { title: 'E-commerce vêtements enfants', description: "Site e-commerce statique pour une boutique de vêtements pour enfants, organisé par tranche d'âge (0-2, 3-5, 6-8 ans) : panier d'achat dynamique avec calcul automatique du total et gestion des quantités, filtre par prix maximum, et espace administrateur pour la gestion des produits (ajout, modification, suppression).", tech: 'HTML5, CSS3, JavaScript', image: '/images/projects/children-store-projet.PNG', github: 'https://github.com/makhloufiouiam/children-clothing-store' },
         { title: 'Gestion de librairie', description: "Application web de gestion pour une librairie (livres et fournitures scolaires) : suivi du stock, caisse avec calcul automatique et mise à jour des quantités selon les ventes et achats, accès multi-appareils pour le vendeur.", tech: 'Développement web, Gestion de stock', inProgress: true },
@@ -144,16 +149,17 @@ projects: {
     skills: {
       title: 'Compétences',
       categories: [
-        { category: 'SIG, Télédétection & Photogrammétrie', items: ['QGIS', 'ArcMap', 'QGIS Server', 'GeoServer', 'MapServer', 'Google Earth Pro', 'Google Earth Engine', 'ENVI', 'ERDAS Imagine', 'Philcarto / Phildigit', 'GéoAcadémie'] },
+        { category: 'SIG, Télédétection & Photogrammétrie', items: ['QGIS', 'ArcMap', 'QGIS Server', 'GeoServer', 'MapServer', 'Google Earth Pro', 'Google Earth Engine', 'ENVI', 'ERDAS Imagine', 'Philcarto / Phildigit', 'GéoAcadémie', 'Sentinel-1/2', 'Landsat 8/9', 'Indices spectraux & radar'] },
         { category: 'Développement Web — Front-end', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React 19', 'Angular', 'Tailwind CSS', 'React Router', 'Axios', 'react-leaflet / Leaflet', 'OpenLayers', 'React Portal'] },
         { category: 'Développement Web — Back-end', items: ['Python', 'PHP', 'Java', 'C', 'C++', 'FastAPI', 'NestJS', 'SQLAlchemy', 'GeoAlchemy2', 'Alembic', 'Pydantic', 'JWT (python-jose / bcrypt)', "Conception d'API RESTful"] },
-        { category: 'Bases de données & Spatial', items: ['PostgreSQL', 'PostGIS', 'MySQL', 'Modélisation relationnelle et spatiale', 'Index spatiaux GIST', 'Shapefile / GeoJSON'] },
-        { category: 'Python — Bibliothèques scientifiques', items: ['Pandas', 'NumPy', 'Matplotlib', 'GeoPandas', 'Folium'] },
+        { category: 'Bases de données & Spatial', items: ['PostgreSQL', 'PostGIS', 'MySQL', 'Modélisation relationnelle et spatiale', 'Index spatiaux GIST', 'Shapefile / GeoJSON', 'pgRouting'] },
+        { category: 'Python — Bibliothèques scientifiques', items: ['Pandas', 'NumPy', 'Matplotlib', 'GeoPandas', 'Folium', 'scikit-learn', 'rasterio'] },
+        { category: 'GeoAI & Machine Learning', items: ['Random Forest', 'SVM', 'Maximum de vraisemblance', 'Minimum Distance', 'Mahalanobis', 'K-Means', 'ISODATA', 'DBSCAN', 'Validation croisée', 'Matrice de confusion', 'Indice Kappa'] },
         { category: 'Interfaces & Outils Python', items: ['Tkinter', 'PyQt6', 'Apache'] },
-        { category: 'Analyse de données & Statistiques', items: ['R', 'Cloudera / Big Data'] },
+        { category: 'Big Data & Statistiques', items: ['R', 'Hadoop', 'Hive', 'Spark / Sedona', 'Cloudera'] },
         { category: 'Modélisation & Méthodologie', items: ['UML', 'Merise', 'Conception logicielle', 'Git / GitHub', 'Méthodologie de gestion de projet'] },
         { category: 'DevOps & Déploiement', items: ['Docker / Docker Compose', 'MinIO', 'Swagger / OpenAPI'] },
-        { category: 'Topographie & DAO', items: ['AutoCAD', 'Levés topographiques (station totale Leica)'] },
+        { category: 'Topographie, Photogrammétrie & DAO', items: ['AutoCAD', 'Levés topographiques (station totale Leica)', 'ArcGIS Drone2Map', 'Calibration de caméra', 'Orientation interne, relative et absolue', 'Aérotriangulation', 'SfM / MVS', 'Génération de MNT', 'Orthorectification'] },
       ],
     },
     contact: {
@@ -253,9 +259,14 @@ experience: {
 projects: {
   title: 'Projects',
   inProgressLabel: 'In progress',
+  allLabel: 'All',
+  githubLabel: 'View on GitHub',
+  reportLabel: 'View report',
+  readMore: 'Read more',
+  readLess: 'Read less',
   categories: [
     {
-      name: 'Remote Sensing & Spatial Analysis',
+      name: 'Remote Sensing & Spatial Analysis', tag: 'Remote sensing',
       items: [
        {
   title: 'QGIS Plugin - Decision Support (Derogation & Sentinel)',
@@ -265,18 +276,18 @@ projects: {
   github: 'https://github.com/makhloufiouiam/qgis-derogation-plugin'
 },
         { title: 'Impact of Floods on Vegetation', description: 'Analysis of the impact of floods on vegetation using remote sensing and GIS in the Rabat-Salé-Kénitra region.', tech: 'Remote sensing, GIS, Google Earth Engine, QGIS, ARCGIS' },
-        { title: 'Water Quality - Merja Zerga', description: 'Analysis of water quality in the Merja Zerga lagoon using Landsat 8 and 9 imagery and Machine Learning algorithms.', tech: 'Google Earth Engine, Machine Learning' },
-        { title: 'Burned Area Classification - Rmilat', description: 'Supervised Random Forest classification of burned and unburned areas in the Rmilat forest using Sentinel-2 imagery.', tech: 'Python, Random Forest, Google Earth Engine' },
-        { title: 'Multi-criteria Spatial Analysis - Stowe', description: 'GIS multi-criteria spatial analysis to locate the optimal site for a new school in Stowe and determine the optimal route to a nearby junction.', tech: 'QGIS, Spatial analysis' },
-        { title: 'Coastline - Bay of Tangier', description: 'Analysis, digitization and mapping of the coastline of the Bay of Tangier.', tech: 'QGIS, Cartography' },
+        { title: "Water Quality - Merja Zerga", description: "Optical remote sensing monitoring of water quality in the Merja Zerga lagoon (Moulay Bousselham, Ramsar site), tracking its seasonal variations (2025-2026) and the impact of the COVID-19 lockdown (2020). Landsat 8 and 9 imagery preprocessed in ENVI: radiometric correction, DOS1 atmospheric correction, multispectral stack and NDWI water mask. Computation of turbidity (NDTI), suspended matter (NSMI) and chlorophyll-a indices, then unsupervised K-Means classification in Google Earth Engine into three quality classes (good, medium, poor). Result: a clear seasonal pattern, with peak turbidity in autumn driven by river inflows and algal blooms in summer linked to eutrophication.", tech: "Landsat 8/9, ENVI, Google Earth Engine, K-Means, Spectral indices (NDWI, NDTI, NSMI, Chl-a)" },
+        { title: "Burned Area Classification - Rmilat", description: "Detection and mapping of burned areas in the Rmilat forest (Tangier) after the August 2023 fire: pre- and post-fire Sentinel-2 imagery acquired through Google Earth Engine, spectral indices (dNBR, NDVI, NDWI, NDBI), ground truth generated by multi-index thresholding for four classes (burned, healthy vegetation, water, built-up), then Random Forest classification tuned with cross-validation. 96.45% accuracy and an estimated burned area of 493.6 ha, with the final map exported as GeoTIFF.", tech: "Python, scikit-learn (Random Forest), rasterio, NumPy, pandas, Google Earth Engine, Sentinel-2, Jupyter", report: '/documents/Rapport_Classification_Random_Forest_Rmilat.pdf' },
+        { title: "Multi-criteria Spatial Analysis - Stowe", description: "Search for the optimal site for a new school in Stowe: several criteria weighted by importance and combined through spatial analysis operations (intersect, union, clip...), then identification of the optimal route between the selected site and a nearby junction.", tech: "ArcMap, Multi-criteria analysis, Geoprocessing" },
+        { title: "Coastline - Bay of Tangier", description: "Study of coastal erosion in the Bay of Tangier: the coastline was digitized on two satellite images from two different years, then the two lines were compared to measure how it changed. The analysis revealed erosion in the bay and ranked areas from most to least at risk according to their distance from the shoreline. The results are presented in a summary map.", tech: "ArcMap, Digitization, Satellite imagery, Multi-temporal analysis" },
       ],
     },
     {
-      name: 'WebGIS Platforms & Interactive Cartography',
+      name: 'WebGIS Platforms & Interactive Cartography', tag: 'WebGIS',
       items: [
         { title: 'GeoAcademy', description: 'Interactive map of hospitals and healthcare centers in the Tangier-Tetouan-Al Hoceima region, built as a team project on the no-code GeoAcademy platform: data collection via Overpass Turbo and OpenStreetMap, map creation with custom icons, linked search and filter tools (hospital name, city), an editable information sheet organized into thematic sections, and a dashboard with statistics (breakdown by city and facility type).', tech: 'GeoAcademy, OpenStreetMap, Overpass Turbo', image : '/images/projects/Geoacadimie.PNG' , report: '/documents/geoacademie-rapport.pdf' },
-        { title: 'Interactive Atlas', description: 'Design of an interactive atlas for visualizing maps and regional statistics.', tech: 'Interactive cartography' },
-        { title: 'AFCON 2025 Ticketing Platform', description: 'Development of a mapping platform for booking tickets for the 2025 Africa Cup of Nations.', tech: 'GIS, Web development' },
+        { title: 'Interactive Thematic Atlas - Rabat-Salé-Kénitra Region', description: "Problem: how are territorial development dynamics distributed across the Rabat-Salé-Kénitra region? Objective: measure the region's disparities across seven dimensions (population, water, agriculture, road safety, infrastructure, poverty, rainfall) through an atlas of more than 15 maps. Methodology: HCP and OpenStreetMap data, statistics in Excel and R, composite indices (agricultural water pressure, health and accident risk), Sentinel-1/2/5P remote sensing in Google Earth Engine (NDVI, 2026 floods, NO₂) and mapping in QGIS/PhilCarto. Result: a divide between the urban coast and a hinterland combining water stress, poverty and poor accessibility, published as a PDF atlas and an interactive web version.", tech: 'QGIS, PhilCarto, R, Excel, Google Earth Engine, Sentinel-1/2/5P, OpenStreetMap (QuickOSM, Overpass), Web mapping', image: '/images/projects/Atlas.PNG.jpg', report: '/documents/Rapport_Atlas.pdf' },
+        { title: 'AFRICA TICKET - AFCON 2025 Ticketing Platform', description: "A full-stack web platform for booking tickets to the 2025 Africa Cup of Nations in Morocco. Secure user accounts, schedule of all 52 matches, teams by group (FIFA/CAF rankings, AFCON titles), booking by category (VIP, Standard, Economy) with a cart, dynamic pricing based on how close the match is and a « Sold out » status, payment through the PayPal API, and PDF ticket generation (gate, seat, date) to download or send via WhatsApp. Interactive Leaflet/OpenStreetMap map of the 9 stadiums with information popups and Google Maps directions from the user's location, plus a page of cultural and tourist activities filtered by proximity to the stadiums.", tech: 'PHP 8, MySQL/MariaDB (PDO), HTML5, CSS3, JavaScript, Leaflet, OpenStreetMap, Google Maps API, PayPal API, XAMPP', image: '/images/projects/can_2025.PNG', github: 'https://github.com/makhloufiouiam/can_2025', report: '/documents/Rapport%20exam%20final.pdf' },
         {
   title: 'Internship - WebGIS Platform (Tanger Med Engineering)',
   description: "Introductory internship from July 4 to August 4, 2025 at Tanger Med Engineering: design of a mini WebGIS site to manage and visualize geographic anomalies. Entity table, interactive map (points, lines, polygons) with an editable information sheet, entity creation by drawing, and GIS tools built on PostGIS spatial queries: distance (ST_Distance), intersection (ST_Intersects), neighborhood search (ST_DWithin), buffer zone (ST_Buffer) and title filtering.",
@@ -296,7 +307,7 @@ projects: {
       ],
     },
     {
-      name: 'Applications & Interfaces (Python / Java)',
+      name: 'Applications & Interfaces (Python / Java)', tag: 'Applications',
       items: [
         { title: 'Tkinter Interface - Pancreatic Cancer', description: "Interactive application for analyzing and mapping medical data related to pancreatic cancer in Morocco: exploring patient data by region, searching by patient ID, visualizing risk factors, statistical dependency tests, and PDF report generation.", tech: 'Python, Tkinter, Data Analysis', image: '/images/projects/Cancer-projet.PNG', github: 'https://github.com/makhloufiouiam/pancreatic-cancer-gis' , report : '/documents/Rapport_CancerInterface.pdf'},
         {title: 'PyQt6 Interface - Geodesic Calculations',description: "Geodesic calculations application: ellipsoid information (Clarke 1880, WGS84), eccentricity and flattening computation, radii of curvature, geographic-to-Cartesian coordinate conversion, meridian and parallel arc length, area calculation, and direct/inverse geodetic problem solving.",tech: 'Python, PyQt6',image: '/images/projects/geodesie-projet.PNG',github: 'https://github.com/makhloufiouiam/calculs-geodesiques'},
@@ -304,7 +315,7 @@ projects: {
       ],
     },
     {
-      name: 'Web Development',
+      name: 'Web Development', tag: 'Web',
       items: [
         { title: 'Kids Clothing E-commerce', description: "Static e-commerce website for a children's clothing store, organized by age group (0-2, 3-5, 6-8 years): dynamic shopping cart with automatic total calculation and quantity management, maximum price filter, and an admin panel for product management (add, edit, delete).", tech: 'HTML5, CSS3, JavaScript', image: '/images/projects/children-store-projet.PNG', github: 'https://github.com/makhloufiouiam/children-clothing-store' },
         { title: 'Bookstore Management', description: "Web management application for a bookstore (books and school supplies): stock tracking, checkout with automatic calculation and quantity updates for sales and purchases, multi-device access for the seller.", tech: 'Web development, Inventory management', inProgress: true },
@@ -315,16 +326,17 @@ projects: {
     skills: {
       title: 'Skills',
       categories: [
-        { category: 'GIS, Remote Sensing & Photogrammetry', items: ['QGIS', 'ArcMap', 'QGIS Server', 'GeoServer', 'MapServer', 'Google Earth Pro', 'Google Earth Engine', 'ENVI', 'ERDAS Imagine', 'Philcarto / Phildigit', 'GeoAcademy'] },
+        { category: 'GIS, Remote Sensing & Photogrammetry', items: ['QGIS', 'ArcMap', 'QGIS Server', 'GeoServer', 'MapServer', 'Google Earth Pro', 'Google Earth Engine', 'ENVI', 'ERDAS Imagine', 'Philcarto / Phildigit', 'GeoAcademy', 'Sentinel-1/2', 'Landsat 8/9', 'Spectral & radar indices'] },
         { category: 'Web Development — Front-end', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React 19', 'Angular', 'Tailwind CSS', 'React Router', 'Axios', 'react-leaflet / Leaflet', 'OpenLayers', 'React Portal'] },
         { category: 'Web Development — Back-end', items: ['Python', 'PHP', 'Java', 'C', 'C++', 'FastAPI', 'NestJS', 'SQLAlchemy', 'GeoAlchemy2', 'Alembic', 'Pydantic', 'JWT (python-jose / bcrypt)', 'RESTful API design'] },
-        { category: 'Databases & Spatial', items: ['PostgreSQL', 'PostGIS', 'MySQL', 'Relational and spatial modeling', 'GIST spatial indexes', 'Shapefile / GeoJSON'] },
-        { category: 'Python — Scientific Libraries', items: ['Pandas', 'NumPy', 'Matplotlib', 'GeoPandas', 'Folium'] },
+        { category: 'Databases & Spatial', items: ['PostgreSQL', 'PostGIS', 'MySQL', 'Relational and spatial modeling', 'GIST spatial indexes', 'Shapefile / GeoJSON', 'pgRouting'] },
+        { category: 'Python — Scientific Libraries', items: ['Pandas', 'NumPy', 'Matplotlib', 'GeoPandas', 'Folium', 'scikit-learn', 'rasterio'] },
+        { category: 'GeoAI & Machine Learning', items: ['Random Forest', 'SVM', 'Maximum Likelihood', 'Minimum Distance', 'Mahalanobis', 'K-Means', 'ISODATA', 'DBSCAN', 'Cross-validation', 'Confusion matrix', 'Kappa index'] },
         { category: 'Python Interfaces & Tools', items: ['Tkinter', 'PyQt6', 'Apache'] },
-        { category: 'Data Analysis & Statistics', items: ['R', 'Cloudera / Big Data'] },
+        { category: 'Big Data & Statistics', items: ['R', 'Hadoop', 'Hive', 'Spark / Sedona', 'Cloudera'] },
         { category: 'Modeling & Methodology', items: ['UML', 'Merise', 'Software design', 'Git / GitHub', 'Project management methodology'] },
         { category: 'DevOps & Deployment', items: ['Docker / Docker Compose', 'MinIO', 'Swagger / OpenAPI'] },
-        { category: 'Topography & CAD', items: ['AutoCAD', 'Topographic surveys (Leica total station)'] },
+        { category: 'Topography, Photogrammetry & CAD', items: ['AutoCAD', 'Topographic surveys (Leica total station)', 'ArcGIS Drone2Map', 'Camera calibration', 'Interior, relative and absolute orientation', 'Aerial triangulation', 'SfM / MVS', 'DTM generation', 'Orthorectification'] },
       ],
     },
     contact: {
@@ -424,9 +436,14 @@ experience: {
 projects: {
   title: 'المشاريع',
   inProgressLabel: 'قيد الإنجاز',
+  allLabel: 'الكل',
+  githubLabel: 'عرض على GitHub',
+  reportLabel: 'عرض التقرير',
+  readMore: 'اقرأ المزيد',
+  readLess: 'عرض أقل',
   categories: [
     {
-      name: 'الاستشعار عن بعد والتحليل المكاني',
+      name: 'الاستشعار عن بعد والتحليل المكاني', tag: 'الاستشعار عن بعد',
       items: [
         {
   title: 'إضافة QGIS - دعم القرار (الاستثناء وSentinel)',
@@ -436,18 +453,18 @@ projects: {
   github: 'https://github.com/makhloufiouiam/qgis-derogation-plugin'
 },
         { title: 'تأثير الفيضانات على الغطاء النباتي', description: 'تحليل تأثير الفيضانات على الغطاء النباتي باستخدام الاستشعار عن بعد ونظم المعلومات الجغرافية في جهة الرباط سلا القنيطرة.', tech: 'Télédétection, SIG, Google Earth Engine, QGIS, ARCGIS' },
-        { title: 'جودة المياه - مرجة زرقاء', description: 'تحليل جودة مياه بحيرة مرجة زرقاء انطلاقا من صور Landsat 8 و9 وخوارزميات التعلم الآلي.', tech: 'Google Earth Engine, Machine Learning' },
-        { title: 'تصنيف المناطق المحترقة - غابة الرميلات', description: 'تصنيف موجه باستخدام Random Forest للمناطق المحترقة وغير المحترقة في غابة الرميلات انطلاقا من صور Sentinel-2.', tech: 'Python, Random Forest, Google Earth Engine' },
-        { title: 'التحليل المكاني متعدد المعايير - Stowe', description: 'تحليل مكاني متعدد المعايير باستخدام نظم المعلومات الجغرافية لتحديد الموقع الأمثل لإنشاء مدرسة جديدة في Stowe وتحديد المسار الأمثل نحو تقاطع قريب.', tech: 'QGIS, Analyse spatiale' },
-        { title: 'الخط الساحلي - خليج طنجة', description: 'تحليل ورقمنة ورسم خرائط للخط الساحلي لخليج طنجة.', tech: 'QGIS, Cartographie' },
+        { title: "جودة المياه - مرجة زرقاء", description: "رصد جودة مياه بحيرة مرجة زرقاء (مولاي بوسلهام، موقع رامسار) بالاستشعار عن بعد البصري، لتتبع تغيراتها الموسمية (2025-2026) وأثر الحجر الصحي لكوفيد-19 (2020). معالجة أولية لصور Landsat 8 و9 ببرنامج ENVI: تصحيح إشعاعي، تصحيح جوي بطريقة DOS1، تجميع النطاقات الطيفية وقناع المياه NDWI. حساب مؤشرات العكارة (NDTI) والمواد العالقة (NSMI) والكلوروفيل-أ، ثم تصنيف غير موجه بخوارزمية K-Means على Google Earth Engine إلى ثلاث فئات للجودة (جيدة، متوسطة، رديئة). النتيجة: دينامية موسمية واضحة، مع عكارة قصوى في الخريف بسبب الواردات النهرية وتكاثر للطحالب في الصيف مرتبط بالتخثث.", tech: "Landsat 8/9, ENVI, Google Earth Engine, K-Means, Indices spectraux (NDWI, NDTI, NSMI, Chl-a)" },
+        { title: "تصنيف المناطق المحترقة - غابة الرميلات", description: "رصد ورسم خرائط المناطق المحترقة في غابة الرميلات (طنجة) بعد حريق غشت 2023: صور Sentinel-2 قبل الحريق وبعده عبر Google Earth Engine، حساب المؤشرات الطيفية (dNBR، NDVI، NDWI، NDBI)، توليد الحقيقة الميدانية آليًا بتحديد عتبات لعدة مؤشرات لأربع فئات (محترق، غطاء نباتي سليم، ماء، مبني)، ثم تصنيف Random Forest محسَّن بالتحقق المتقاطع. دقة 96,45% ومساحة محترقة مقدرة بـ493,6 هكتار، مع تصدير الخريطة النهائية بصيغة GeoTIFF.", tech: "Python, scikit-learn (Random Forest), rasterio, NumPy, pandas, Google Earth Engine, Sentinel-2, Jupyter", report: '/documents/Rapport_Classification_Random_Forest_Rmilat.pdf' },
+        { title: "التحليل المكاني متعدد المعايير - Stowe", description: "البحث عن الموقع الأمثل لإنشاء مدرسة جديدة في Stowe: دمج عدة معايير مرجحة حسب أهميتها باستعمال عمليات التحليل المكاني (التقاطع، الاتحاد، القص...)، ثم تحديد المسار الأمثل بين الموقع المختار وتقاطع طرق قريب.", tech: "ArcMap, Analyse multicritère, Géotraitement" },
+        { title: "الخط الساحلي - خليج طنجة", description: "دراسة التعرية الساحلية لخليج طنجة: رقمنة الخط الساحلي على صورتين فضائيتين لسنتين مختلفتين، ثم مقارنة الخطين لقياس تطوره. كشف التحليل عن تعرض الخليج للتعرية، ومكّن من تصنيف المناطق من الأكثر خطورة إلى الأقل خطورة حسب بعدها عن خط الشاطئ. وقد عُرضت النتائج في خريطة تركيبية.", tech: "ArcMap, Digitalisation, Imagerie satellite, Analyse diachronique" },
       ],
     },
     {
-      name: 'منصات WebGIS ورسم الخرائط التفاعلي',
+      name: 'منصات WebGIS ورسم الخرائط التفاعلي', tag: 'WebSIG',
       items: [
         { title: 'GeoAcadémie', description: 'خريطة تفاعلية للمستشفيات والمراكز الاستشفائية بجهة طنجة تطوان الحسيمة، أُنجزت ضمن فريق على منصة GeoAcadémie اللاكودية: جمع البيانات عبر Overpass Turbo وOpenStreetMap، إنشاء الخريطة برموز مخصصة، أدوات بحث وفلاتر مترابطة (اسم المستشفى، المدينة)، بطاقة معلومات قابلة للتعديل ومنظمة في أقسام موضوعية، ولوحة تحكم بإحصائيات (التوزيع حسب المدينة ونوع المؤسسة).', tech: 'GeoAcadémie, OpenStreetMap, Overpass Turbo',image : 'public/images/projects/Geoacadimie.PNG', report: '/documents/geoacademie-rapport.pdf' },
-        { title: 'أطلس تفاعلي', description: 'تصميم أطلس تفاعلي لتصور الخرائط والإحصائيات الجهوية.', tech: 'Cartographie interactive' },
-        { title: 'منصة تذاكر كان 2025', description: 'تطوير منصة خرائطية لحجز تذاكر كأس أمم إفريقيا 2025.', tech: 'SIG, Développement web' },
+        { title: 'أطلس موضوعاتي تفاعلي - جهة الرباط سلا القنيطرة', description: "الإشكالية: كيف تتوزع ديناميات التنمية الترابية داخل جهة الرباط سلا القنيطرة؟ الهدف: قياس التفاوتات المجالية للجهة وفق سبعة أبعاد (السكان، الماء، الفلاحة، السلامة الطرقية، البنيات التحتية، الفقر، التساقطات) من خلال أطلس يضم أكثر من 15 خريطة. المنهجية: معطيات المندوبية السامية للتخطيط وOpenStreetMap، معالجة إحصائية بـExcel وR، مؤشرات مركبة (الضغط المائي الفلاحي، الخطر الصحي والطرقي)، استشعار عن بعد بـSentinel-1/2/5P على Google Earth Engine (NDVI، فيضانات 2026، ثاني أكسيد النيتروجين) وإنجاز الخرائط بـQGIS وPhilCarto. النتيجة: فجوة بين الساحل الحضري والمناطق الداخلية التي تجمع بين الإجهاد المائي والفقر وضعف الولوجية، مع نشر الأطلس بصيغة PDF ونسخة ويب تفاعلية.", tech: 'QGIS, PhilCarto, R, Excel, Google Earth Engine, Sentinel-1/2/5P, OpenStreetMap (QuickOSM, Overpass), Web mapping', image: '/images/projects/Atlas.PNG.jpg', report: '/documents/Rapport_Atlas.pdf' },
+        { title: 'AFRICA TICKET - منصة تذاكر كان 2025', description: 'منصة ويب متكاملة (full-stack) لحجز تذاكر كأس أمم إفريقيا 2025 بالمغرب. حسابات مستخدمين آمنة، جدول المباريات الـ52، المنتخبات حسب المجموعات (تصنيف FIFA وCAF وعدد الألقاب)، حجز حسب الفئة (VIP، عادية، اقتصادية) مع سلة مشتريات، تسعير ديناميكي حسب اقتراب موعد المباراة مع حالة « Sold out »، دفع عبر واجهة PayPal، وتوليد التذكرة بصيغة PDF (رقم الباب والمقعد والتاريخ) قابلة للتحميل أو الإرسال عبر واتساب. خريطة تفاعلية Leaflet/OpenStreetMap للملاعب التسعة مع بطاقة معلومات ومسار Google Maps انطلاقًا من موقع المستخدم، وصفحة للأنشطة الثقافية والسياحية مصنفة حسب القرب من الملاعب.', tech: 'PHP 8, MySQL/MariaDB (PDO), HTML5, CSS3, JavaScript, Leaflet, OpenStreetMap, Google Maps API, PayPal API, XAMPP', image: '/images/projects/can_2025.PNG', github: 'https://github.com/makhloufiouiam/can_2025', report: '/documents/Rapport%20exam%20final.pdf' },
         {
   title: 'مشروع نهاية السنة - منصة متكاملة لتدبير الوثائق وتحديد المواقع الجغرافية للمشاريع (IRUAAT)',
   description: "مشروع نهاية السنة (2026) بالمفتشية الجهوية للتعمير والهندسة المعمارية وإعداد التراب لجهة طنجة تطوان الحسيمة: تصميم منصة ويب موحدة تجمع بين تدبير الوثائق والبوابة الجغرافية. وحدة الوثائق: رفع الملفات، بحث متعدد المعايير، تصنيفات هرمية، وسوم، إدارة الإصدارات، سلة المحذوفات، سجل التدقيق، مصادقة JWT والتحكم في الولوج حسب الأدوار. وحدة البوابة الجغرافية: خريطة تفاعلية Leaflet بمشاريع ملونة حسب حالتها، إدارة المشاريع (إنشاء، تعديل، حذف)، بطاقة تقنية، ربط الوثائق بالمشاريع، عرض هندسة ملفات SHP، أدوات PostGIS لحساب المسافة (ST_Distance) والمنطقة العازلة (ST_Buffer، ST_DWithin)، استيراد/تصدير CSV/GeoJSON ولوحة إحصائيات.",
@@ -467,7 +484,7 @@ projects: {
       ],
     },
     {
-      name: 'تطبيقات وواجهات (بايثون / جافا)',
+      name: 'تطبيقات وواجهات (بايثون / جافا)', tag: 'تطبيقات',
       items: [
         { title: 'واجهة Tkinter - سرطان البنكرياس', description: 'تطبيق تفاعلي لتحليل ورسم البيانات الطبية المرتبطة بسرطان البنكرياس في المغرب: استكشاف بيانات المرضى حسب الجهة، البحث برقم المريض، تصور عوامل الخطر، اختبارات الاعتماد الإحصائي، وإنشاء تقارير PDF.', tech: 'بايثون، Tkinter، تحليل البيانات', image: '/images/projects/Cancer-projet.PNG', github: 'https://github.com/makhloufiouiam/pancreatic-cancer-gis' , report : '/documents/Rapport_CancerInterface.pdf'},
         { title: 'واجهة PyQt6 - الحسابات الجيوديسية',description: 'تطبيق للحسابات الجيوديسية: معلومات حول الإهليلجيات (Clarke 1880 وWGS84)، حساب الانحرافات والتسطح، أنصاف أقطار الانحناء، تحويل الإحداثيات الجغرافية إلى ديكارتية، طول القوس الزوالي والقوس الموازي، حساب المساحة، وحل المسألتين المباشرة والعكسية.',tech: 'Python، PyQt6',image: '/images/projects/geodesie-projet.PNG',github: 'https://github.com/makhloufiouiam/calculs-geodesiques'},
@@ -475,7 +492,7 @@ projects: {
       ],
     },
     {
-      name: 'تطوير الويب',
+      name: 'تطوير الويب', tag: 'ويب',
       items: [
         { title: 'متجر إلكتروني لملابس الأطفال', description: 'موقع تجارة إلكترونية ثابت لمتجر ملابس أطفال، مصنف حسب الفئة العمرية (0-2، 3-5، 6-8 سنوات): سلة تسوق ديناميكية مع حساب المجموع تلقائيًا وإدارة الكميات، فلتر حسب السعر الأقصى، ولوحة تحكم للمسؤول لإدارة المنتجات (إضافة، تعديل، حذف).', tech: 'HTML5, CSS3, JavaScript', image: '/images/projects/children-store-projet.PNG', github: 'https://github.com/makhloufiouiam/children-clothing-store' },
         { title: 'تدبير مكتبة', description: 'تطبيق ويب لتدبير مكتبة (كتب ولوازم مدرسية): تتبع المخزون، صندوق أداء مع حساب آلي وتحديث الكميات حسب المبيعات والمشتريات، وولوج من عدة أجهزة للبائع.', tech: 'Développement web, Gestion de stock', inProgress: true },
@@ -486,16 +503,17 @@ projects: {
     skills: {
       title: 'المهارات',
       categories: [
-        { category: 'نظم المعلومات الجغرافية، الاستشعار عن بعد والتصوير الجوي', items: ['QGIS', 'ArcMap', 'QGIS Server', 'GeoServer', 'MapServer', 'Google Earth Pro', 'Google Earth Engine', 'ENVI', 'ERDAS Imagine', 'Philcarto / Phildigit', 'GéoAcadémie'] },
+        { category: 'نظم المعلومات الجغرافية، الاستشعار عن بعد والتصوير الجوي', items: ['QGIS', 'ArcMap', 'QGIS Server', 'GeoServer', 'MapServer', 'Google Earth Pro', 'Google Earth Engine', 'ENVI', 'ERDAS Imagine', 'Philcarto / Phildigit', 'GéoAcadémie', 'Sentinel-1/2', 'Landsat 8/9', 'المؤشرات الطيفية والرادارية'] },
         { category: 'تطوير الويب - الواجهة الأمامية', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React 19', 'Angular', 'Tailwind CSS', 'React Router', 'Axios', 'react-leaflet / Leaflet', 'OpenLayers', 'React Portal'] },
         { category: 'تطوير الويب - الواجهة الخلفية', items: ['Python', 'PHP', 'Java', 'C', 'C++', 'FastAPI', 'NestJS', 'SQLAlchemy', 'GeoAlchemy2', 'Alembic', 'Pydantic', 'JWT (python-jose / bcrypt)', 'تصميم واجهات RESTful'] },
-        { category: 'قواعد البيانات والمعطيات المكانية', items: ['PostgreSQL', 'PostGIS', 'MySQL', 'النمذجة العلائقية والمكانية', 'مؤشرات مكانية GIST', 'Shapefile / GeoJSON'] },
-        { category: 'بايثون - المكتبات العلمية', items: ['Pandas', 'NumPy', 'Matplotlib', 'GeoPandas', 'Folium'] },
+        { category: 'قواعد البيانات والمعطيات المكانية', items: ['PostgreSQL', 'PostGIS', 'MySQL', 'النمذجة العلائقية والمكانية', 'مؤشرات مكانية GIST', 'Shapefile / GeoJSON', 'pgRouting'] },
+        { category: 'بايثون - المكتبات العلمية', items: ['Pandas', 'NumPy', 'Matplotlib', 'GeoPandas', 'Folium', 'scikit-learn', 'rasterio'] },
+        { category: 'الذكاء الاصطناعي الجغرافي والتعلم الآلي', items: ['Random Forest', 'SVM', 'الاحتمال الأقصى', 'أدنى مسافة', 'Mahalanobis', 'K-Means', 'ISODATA', 'DBSCAN', 'التحقق المتقاطع', 'مصفوفة الالتباس', 'مؤشر كابا'] },
         { category: 'واجهات وأدوات بايثون', items: ['Tkinter', 'PyQt6', 'Apache'] },
-        { category: 'تحليل البيانات والإحصاء', items: ['R', 'Cloudera / Big Data'] },
+        { category: 'البيانات الضخمة والإحصاء', items: ['R', 'Hadoop', 'Hive', 'Spark / Sedona', 'Cloudera'] },
         { category: 'النمذجة والمنهجية', items: ['UML', 'Merise', 'تصميم البرمجيات', 'Git / GitHub', 'منهجية تدبير المشاريع'] },
         { category: 'DevOps والنشر', items: ['Docker / Docker Compose', 'MinIO', 'Swagger / OpenAPI'] },
-        { category: 'الطوبوغرافيا والتصميم بالحاسوب', items: ['AutoCAD', 'رفع طوبوغرافي (محطة شاملة Leica)'] },
+        { category: 'الطوبوغرافيا والمسح التصويري والتصميم بالحاسوب', items: ['AutoCAD', 'رفع طوبوغرافي (محطة شاملة Leica)', 'ArcGIS Drone2Map', 'معايرة الكاميرا', 'التوجيه الداخلي والنسبي والمطلق', 'التثليث الجوي', 'SfM / MVS', 'إنشاء نموذج رقمي للتضاريس', 'التقويم الهندسي للصور'] },
       ],
     },
     contact: {
